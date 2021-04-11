@@ -13,13 +13,18 @@
  *
  */
 function isMAC48Address(n) {
+  const arr = n.split('');
+
   for (let i = 1; i < 6; i++) {
-    if (n[i * 3 - 1] !== '-') return false;
+    if (arr[i * 3 - 1] !== '-') return false;
   }
-  const arrFiltered = n.filter((el) => el !== '-');
+
+  const arrFiltered = arr.filter((el) => el !== '-');
+
   for (let i = 0; i < arrFiltered.length; i++) {
     if (!arrFiltered[i].match(/[0-9A-F]/i)) return false;
   }
+
   return true;
 }
 

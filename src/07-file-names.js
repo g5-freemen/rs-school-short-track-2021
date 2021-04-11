@@ -19,14 +19,22 @@ function renameFiles(names) {
   for (let i = 0; i < names.length; i++) {
     obj[names[i]] = 0;
   }
+
   for (let i = 0; i < names.length; i++) {
     if (obj[names[i]] === 0) {
-      arr.push(names[i]);
-      obj[names[i]]++;
+      if (arr.find((el) => el === names[i])) {
+        obj[names[i]]++;
+        arr.push(`${names[i]}(${obj[names[i]]})`);
+      } else {
+        arr.push(names[i]);
+        obj[names[i]]++;
+      }
     } else if (obj[names[i]] > 0) {
       arr.push(`${names[i]}(${obj[names[i]]})`);
+      obj[names[i]]++;
     }
   }
+
   return arr;
 }
 

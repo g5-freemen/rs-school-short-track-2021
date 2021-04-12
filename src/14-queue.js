@@ -12,6 +12,11 @@
  */
 
 class Queue {
+  constructor() {
+    this.data = [];
+    this.top = 0;
+  }
+
   get size() {
     throw new Error('Not implemented');
   }

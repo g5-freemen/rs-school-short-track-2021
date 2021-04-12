@@ -11,22 +11,38 @@
  *
  */
 
+//  function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+
+// function convertArrayToList(arr) {
+//   return arr.reverse().reduce((acc, cur) => {
+//     if (acc) {
+//       const node = new ListNode(cur);
+//       node.next = acc;
+//       return node;
+//     }
+
+//     return new ListNode(cur);
+//   }, null);
+// }
+
 class Queue {
   constructor() {
     this.data = [];
-    this.top = 0;
   }
 
   get size() {
-    throw new Error('Not implemented');
+    return this.data.length;
   }
 
-  enqueue(/* element */) {
-    throw new Error('Not implemented');
+  enqueue(element) {
+    return this.data.push(element);
   }
 
   dequeue() {
-    throw new Error('Not implemented');
+    return this.data.shift();
   }
 }
 

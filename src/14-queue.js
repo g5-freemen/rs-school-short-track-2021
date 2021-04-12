@@ -4,34 +4,50 @@
  * @example
  * const queue = new Queue();
  *
- * queue.enqueue(1); // adds the element to the queue
- * queue.enqueue(3); // adds the element to the queue
- * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
+ * queue.enqueue(1); // adds the value to the queue
+ * queue.enqueue(3); // adds the value to the queue
+ * queue.dequeue(); // returns the top value from queue and deletes it, returns 1
  *
  */
 
-// const ListNode = require('../extensions/list-node');
-
-//  function ListNode(x) {
-//   this.value = x;
-//   this.next = null;
-// }
+const ListNode = require('../extensions/list-node');
 
 class Queue {
   constructor() {
-    this.data = [];
-  }
-
-  get size() {
-    return this.data.length;
+    this.length = 0;
+    this.head = null;
   }
 
   enqueue(element) {
-    return this.data.push(element);
+    const node = new ListNode(element);
+    let current;
+
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+
+      current.next = node;
+    }
+
+    this.length++;
   }
 
   dequeue() {
-    return this.data.shift();
+    let current = this.head;
+
+    if (current) {
+      const elm = current.value;
+      current = current.next;
+      this.head = current;
+      this.length--;
+      return elm;
+    }
+
+    return null;
   }
 }
 

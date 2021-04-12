@@ -11,12 +11,24 @@
  * For ([1, 2, 3], 2) should return 1
  *
  */
-function findIndex(arr, val) {
-  let i = arr.length;
-  for (i; i >= 0; i--) {
-    if (arr[i] === val) break;
+function findIndex(arr, value) {
+  let first = 0;
+  let last = arr.length - 1;
+  let position;
+  let middle;
+
+  while (first <= last) {
+    middle = Math.floor((first + last) / 2);
+    if (arr[middle] === value) {
+      position = middle;
+      break;
+    } else if (value < arr[middle]) {
+      last = middle - 1;
+    } else {
+      first = middle + 1;
+    }
   }
-  return i;
+  return position;
 }
 
 module.exports = findIndex;

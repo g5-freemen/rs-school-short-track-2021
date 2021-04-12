@@ -16,12 +16,17 @@
  *   this.next = null;
  * }
  */
-function ListNode(x) {
-  this.value = x;
-  this.next = null;
-}
+const ListNode = require('../extensions/list-node');
 
-function convertArrayToList(arr) {
+function removeKFromList(l, k) {
+  const arr = [];
+  let currentNode = l;
+
+  while (currentNode) {
+    if (currentNode.value !== k) arr.push(currentNode.value);
+    currentNode = currentNode.next;
+  }
+
   return arr.reverse().reduce((acc, cur) => {
     if (acc) {
       const node = new ListNode(cur);
@@ -31,20 +36,6 @@ function convertArrayToList(arr) {
 
     return new ListNode(cur);
   }, null);
-}
-
-function removeKFromList(l, k) {
-  const arr = [];
-  let currentNode = l;
-
-  if (!l.value) return null;
-
-  while (currentNode) {
-    if (currentNode.value !== k) arr.push(currentNode.value);
-    currentNode = currentNode.next;
-  }
-
-  return convertArrayToList(arr);
 }
 
 module.exports = removeKFromList;
